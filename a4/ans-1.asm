@@ -28,7 +28,7 @@ sw $t1, count
 
 # run a loop
 Loop:
-	bge count, n, EXIT
+	bge count, n, exit
 	add count, count, 1
 	add, sum, sum, count
 	
