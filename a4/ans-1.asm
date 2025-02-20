@@ -34,11 +34,10 @@ Loop:
 	
 	j Loop
 exit:
-
-# print out sum
-li $v0, 1
-move $a0, sum
-syscall
+	# print out sum
+	li $v0, 1
+	move $a0, sum
+	syscall
 
 # indicate end of program
 li $v0, 10
