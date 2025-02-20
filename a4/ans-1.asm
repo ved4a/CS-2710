@@ -41,7 +41,7 @@ exit:
 	li $v0, 1
 	move $a0, $t1
 	syscall
-
-# indicate end of program
-li $v0, 10
-syscall
+	
+	# indicate end of program
+	li $v0, 10
+	syscall
