@@ -2,8 +2,8 @@
 # create a prompt message for user input!
 .data
 n: .word 0
-sum: .word 0
 count: .word 0
+sum: .word 0
 prompt: .asciiz "Enter a number: "
 
 .text
@@ -19,7 +19,7 @@ li $v0, 5
 syscall
 sw $v0, n
 
-# initialize sum, count to 0
+# initialize count, sum to 0
 li $t0, 0
 li $t1, 0
 
@@ -28,9 +28,9 @@ lw $t2, n
 
 # run a loop
 Loop:
-	bge count, n, exit
-	add count, count, 1
-	add, sum, sum, count
+	bge $t0, $t2, exit
+	addi $t0, $t0, 1
+	add, $t1, $t1, $t0
 	
 	j Loop
 exit:
