@@ -25,3 +25,12 @@ sw $t0, sum
 
 li $t1, 0
 sw $t1, count
+
+# run a loop
+Loop:
+	bge count, n, EXIT
+	add count, count, 1
+	add, sum, sum, count
+	
+	j Loop
+exit:
