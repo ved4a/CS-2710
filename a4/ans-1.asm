@@ -34,9 +34,12 @@ Loop:
 	
 	j Loop
 exit:
-	# print out sum 
+	# store sum back in memory
+	sw $t1, sum
+	
+	# print sum
 	li $v0, 1
-	move $a0, sum
+	move $a0, $t1
 	syscall
 
 # indicate end of program
