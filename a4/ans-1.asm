@@ -21,10 +21,10 @@ sw $v0, n
 
 # initialize sum, count to 0
 li $t0, 0
-sw $t0, sum
-
 li $t1, 0
-sw $t1, count
+
+# load 'n' into a register
+lw $t2, n
 
 # run a loop
 Loop:
@@ -34,7 +34,7 @@ Loop:
 	
 	j Loop
 exit:
-	# print out sum
+	# print out sum 
 	li $v0, 1
 	move $a0, sum
 	syscall
