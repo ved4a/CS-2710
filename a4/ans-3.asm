@@ -69,7 +69,7 @@ fibonacci:
 	move $t1, $v0 # for storage
 	
 	# compute fib(n-2)
-	lw $a0, $0($sp) # restore original n
+	lw $a0, 0($sp) # restore original n
 	addi $a0, $a0, -2
 	jal fibonacci
 	move $t2, $v0 # for storage
