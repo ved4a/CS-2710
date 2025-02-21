@@ -4,14 +4,15 @@
 n: .word 0
 count: .word 0
 sum: .word 0
-prompt: .asciiz "Enter a number: "
+prompt1: .asciiz "Enter a number: "
+prompt2: .asciiz "The sum (S) is equal to "
 
 .text
 .globl main
 main:
 # print prompt
 li $v0, 4
-la $a0, prompt
+la $a0, prompt1
 syscall
 
 # read integer and store in 'n'
@@ -37,7 +38,10 @@ exit:
 	# store sum back in memory
 	sw $t1, sum
 	
-	# print sum
+	# print sum w/ message
+	li $v0, 4
+	la $a0, prompt2
+	syscall
 	li $v0, 1
 	move $a0, $t1
 	syscall
