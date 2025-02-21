@@ -66,7 +66,18 @@ exit:
 
 # gcd calculation
 Loop:
+	# if x,y are equal just return x
 	beq $t0, $t1, exit
+	# if x < y, let y = y -x
+	blt $t0, $t1, if
+	# if x > y, let x = x - y
+	sub $t0, $t0, $t1
+	
+	j Loop
+if:
+	sub $t1, $t1, $t0
+	
+	j Loop
 exit:
 	# print prompt
 	li $v0, 4
