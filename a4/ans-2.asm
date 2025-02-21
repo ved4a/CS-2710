@@ -31,6 +31,8 @@ Loop:
 	li $v0, 5
 	syscall
 	sw $v0, $t0
+	
+	j Loop
 exit:
 
 # do the same for the next number
@@ -57,7 +59,7 @@ Loop:
 	li $v0, 5
 	syscall
 	sw $v0, $t1
+	
+	j Loop
 exit:
-
-
 	
