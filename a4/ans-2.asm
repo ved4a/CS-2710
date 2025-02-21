@@ -3,6 +3,7 @@
 prompt1: .asciiz "Enter the first number: "
 prompt2: .asciiz "Enter the second number: "
 prompt3: .asciiz "Please enter a positive number.\n"
+prompt4: .asciiz "The GCD is: "
 
 .text
 .globl main
@@ -62,4 +63,12 @@ Loop:
 	
 	j Loop
 exit:
+	# print prompt
+	li $v0, 4
+	la $a0, prompt4
+	syscall
+	# print the gcd
+	li $v0, 1
+	move $a0, $t0
+	syscall
 	
