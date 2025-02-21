@@ -19,10 +19,7 @@ lw $t0, n
 PositiveCheck:
 	# if n >= 2, start recursive step
 	bge $t0, 2, recurse
-	
-	# base case: n = 1
-	beq $t0, 1, return
-	
+
 	# < 1 so prompt again
 	li $v0, 4
 	la $a0, prompt2
@@ -39,8 +36,4 @@ PositiveCheck:
 	
 	j PositiveCheck
 recurse:
-	
-	
 return:
-	move $v0, $t0
-	jr $ra
