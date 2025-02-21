@@ -36,4 +36,20 @@ PositiveCheck:
 	
 	j PositiveCheck
 recurse:
-return:
+	lw $a0, n
+	jal fibonacci # separate fun.
+	move $t1, $v0
+	
+	# print result
+	li $v0, 4
+	la $a0, prompt3
+	syscall
+	
+	li $v0, 1
+	move $a0, $t1
+	syscall
+	
+	# exit
+	li $v0, 10
+	syscall
+	
