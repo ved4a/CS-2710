@@ -93,3 +93,7 @@ exit3:
 	move $a0, $t0
 	syscall
 	
+	# end of program
+	li $v0, 10
+	syscall
+	
