@@ -22,8 +22,8 @@ sw $v0, x
 lw $t0, x	
 
 # check if the inputted number is positive
-Loop:
-	bge $t0, 1, exit
+Loop1:
+	bge $t0, 1, exit1
 	li $v0, 4
 	la $a0, prompt3
 	syscall
@@ -37,8 +37,8 @@ Loop:
 	sw $v0, x
 	lw $t0, x
 	
-	j Loop
-exit:
+	j Loop1
+exit1:
 
 # do the same for the next number
 # get second user input
@@ -52,8 +52,8 @@ syscall
 sw $v0, y
 lw $t1, y
 
-Loop:
-	bge $t1, 1, exit
+Loop2:
+	bge $t1, 1, exit2
 	li $v0, 4
 	la $a0, prompt3
 	syscall
@@ -67,23 +67,23 @@ Loop:
 	sw $v0, y
 	lw $t1, y
 	
-	j Loop
-exit:
+	j Loop2
+exit2:
 
 # gcd calculation
-Loop:
+Loop3:
 	# if x,y are equal just return x
-	beq $t0, $t1, exit
+	beq $t0, $t1, exit3
 	# if x < y, let y = y -x
 	blt $t0, $t1, if
 	# if x > y, let x = x - y
 	sub $t0, $t0, $t1
 	
-	j Loop
+	j Loop3
 if:
 	sub $t1, $t1, $t0
-	j Loop
-exit:
+	j Loop3
+exit3:
 	# print prompt
 	li $v0, 4
 	la $a0, prompt4
