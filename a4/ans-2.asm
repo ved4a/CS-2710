@@ -63,6 +63,11 @@ Loop:
 	
 	j Loop
 exit:
+
+# gcd calculation
+Loop:
+	beq $t0, $t1, exit
+exit:
 	# print prompt
 	li $v0, 4
 	la $a0, prompt4
