@@ -34,6 +34,53 @@ main:
 		add $t3, $t3, 1 # increment count
 		
 		j Loop
+		
 	return_fib:
+		li $a0, 4
+		la $a0, prompt3
+		syscall
+		
+		li $a0, 1
+		la $a0, ($t2) # return y
+		syscall
+		
+		li $a0, 10
+		syscall
+		
+	return_zero:
+		li $a0, 4
+		la $a0, prompt3
+		syscall
+		
+		li $a0, 1
+		la $a0, ($zero) # return 0
+		syscall
+		
+		# end
+		li $a0, 10
+		syscall
+		
+	return_one:
+		li $a0, 4
+		la $a0, prompt3
+		syscall
+		
+		li $a0, 1
+		la $a0, 1 # return 1
+		syscall
+		
+		# end
+		li $a0, 10
+		syscall
+		
+	invalid_input:
+		li $a0, 4
+		la $a0, prompt2
+		syscall
+		
+		j main
+		
+		
+		
 		
 		  		
