@@ -1,5 +1,7 @@
 # create 2 prompts
 .data
+x: .word 0
+y: .word 0
 prompt1: .asciiz "Enter the first number: "
 prompt2: .asciiz "Enter the second number: "
 prompt3: .asciiz "Please enter a positive number.\n"
@@ -16,7 +18,8 @@ syscall
 # read value
 li $v0, 5
 syscall
-sw $v0, $t0	
+sw $v0, x
+lw $t0, x	
 
 # check if the inputted number is positive
 Loop:
@@ -31,7 +34,8 @@ Loop:
 	
 	li $v0, 5
 	syscall
-	sw $v0, $t0
+	sw $v0, x
+	lw $t0, x
 	
 	j Loop
 exit:
@@ -45,7 +49,8 @@ syscall
 # read value
 li $v0, 5
 syscall
-sw $v0, $t1
+sw $v0, y
+lw $t1, y
 
 Loop:
 	bge $t1, 1, exit
@@ -59,7 +64,8 @@ Loop:
 	
 	li $v0, 5
 	syscall
-	sw $v0, $t1
+	sw $v0, y
+	lw $t1, y
 	
 	j Loop
 exit:
@@ -76,7 +82,6 @@ Loop:
 	j Loop
 if:
 	sub $t1, $t1, $t0
-	
 	j Loop
 exit:
 	# print prompt
