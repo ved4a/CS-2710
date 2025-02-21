@@ -52,4 +52,36 @@ recurse:
 	# exit
 	li $v0, 10
 	syscall
+
+fibonacci:
+	# base case(s)_ fib(2) = fib(3) = 1
+	beq $a0, 2, base_case
+	beq $a0, 3, base_case
 	
+	# push the return addy and $a0 to stack
+	addi $sp, $sp, -8
+	sw $ra, 4($sp)
+	sw $a0, 0($sp)
+	
+	# compute fib(n-1)
+	addi $a0, $a0, -1
+	jal fibonacci
+	move $t1, $v0 # for storage
+	
+	# compute fib(n-2)
+	lw $a0, $0($sp) # restore original n
+	addi $a0, $a0, -2
+	jal fibonacci
+	move $t2, $v0 # for storage
+	
+	# final
+	add $v0, $t1, $t2
+	
+	# restore $ra
+	lw $ra, 4($sp)
+	addi $sp, $sp, 8
+	jr $ra
+
+base_case:
+	li $v0, 1
+	jr $ra
