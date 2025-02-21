@@ -19,9 +19,11 @@ lw $t0, n
 PositiveCheck:
 	# if n >= 2, start recursive step
 	bge $t0, 2, recurse
-	# if n = 1, go return 1
+	
+	# base case: n <= 1
 	beq $t0, 1, return
-	# else, n < 1 so prompt again
+	
+	# < 1 so prompt again
 	li $v0, 4
 	la $a0, prompt2
 	syscall
