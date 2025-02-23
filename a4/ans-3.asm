@@ -14,7 +14,7 @@ main:
 	# get user input
 	li $v0, 5
 	syscall
-	lw $t0, $v0 # store n in $t0
+	move $t0, $v0 # store n in $t0
 	
 	# check if n < 2
 	blt $t0, 2, invalid_input
