@@ -30,7 +30,34 @@ main:
 	syscall
 	
 	# convert integer to hexa
-	li $t1, 28 # shift, starting from first 4-bit chunk		
+	li $t1, 28 # shift, starting from first 4-bit chunk
+	
+	hex_loop:
+		# isolate chunk by shifting by $t1 bits
+		srl $t2, $t0, $t1
+		andi $t2, $t2, 0xF # mask
+		
+		# convert to ASCII: index and load
+		la $t3, hex_digits
+		add $t2, $t2, $t3
+		lbu $a0, 0($t2)
+		
+		# print
+		li $v0, 11
+		syscall
+		
+		# shift to next
+		subi $t1, $t1, 4
+		bgez $t1, hex_loop
+		
+		# print a new line
+		li $v0, 4
+		la $a0, newline
+		syscall
+		
+		# exit program
+		li $v0, 10
+		syscall		
 	
 	invalid_input:
 		li $v0, 4
