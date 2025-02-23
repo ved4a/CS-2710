@@ -27,6 +27,15 @@ main:
 	# check if counter < n	
 	blt $t3, $t0, fib_loop
 	
+	# return y
+	li $v0, 4
+	la $a0, result_prompt
+	syscall
+	
+	li $v0, 1
+	la $a0, $t2
+	syscall
+	
 	# end program
 	li $v0, 10
 	syscall
