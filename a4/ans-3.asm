@@ -23,6 +23,13 @@ main:
 	li $t1, 0 # x = 0
 	li $t2, 1 # y = 1
 	li $t3, 0 # counter = 0
+		
+	# check if counter < n	
+	blt $t3, $t0, fib_loop
+	
+	# end program
+	li $v0, 10
+	syscall
 	
 	fib_loop:
 		
