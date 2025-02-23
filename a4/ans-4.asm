@@ -3,7 +3,7 @@ prompt: .asciiz "Enter an integer: "
 error_prompt: .asciiz "Integer out of 32-bit range.\n"
 hex_prefix: .asciiz "0x"
 hex_digits: .asciiz "0123456789ABCDEF"
-newline: "\n"
+newline: .asciiz "\n"
 
 .text
 .globl main
@@ -23,6 +23,14 @@ main:
 	# check bounds
 	blt $t0, $t1, invalid_input
 	bgt $t0, $t2, invalid_input
+	
+	# print the prefix
+	li $v0, 4
+	la $a0, hex_prefix
+	syscall
+	
+	# convert integer to hexa
+	li $t1, 28 # shift, starting from first 4-bit chunk		
 	
 	invalid_input:
 		li $v0, 4
