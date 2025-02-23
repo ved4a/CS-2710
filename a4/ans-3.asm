@@ -18,6 +18,10 @@ main:
 	
 	# check if n < 2
 	blt $t0, 2, invalid_input
+	
+	# set variables x, y
+	li $t1, 0 # x = 0
+	li $t2, 1 # y = 1
 
 invalid_input:
 	li $v0, 4
