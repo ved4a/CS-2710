@@ -34,7 +34,7 @@ main:
 	
 	hex_loop:
 		# isolate chunk by shifting by $t1 bits
-		srl $t2, $t0, $t1
+		srlv $t2, $t0, $t1
 		andi $t2, $t2, 0xF # mask
 		
 		# convert to ASCII: index and load
