@@ -19,13 +19,18 @@ main:
 	# check if n < 2
 	blt $t0, 2, invalid_input
 	
-	# set variables x, y
+	# set variables x, y, counter
 	li $t1, 0 # x = 0
 	li $t2, 1 # y = 1
-
-invalid_input:
-	li $v0, 4
-	la $a0, incorrect_input_prompt
-	syscall
+	li $t3, 0 # counter = 0
 	
-	j main	
+	fib_loop:
+		
+		
+
+	invalid_input:
+		li $v0, 4
+		la $a0, incorrect_input_prompt
+		syscall
+		
+		j main	
