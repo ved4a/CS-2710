@@ -32,8 +32,13 @@ main:
 	syscall
 	
 	fib_loop:
+		add $t4, $t1, $t2 # set z = x + y
+		move $t1, $t2 # x = y
+		move $t2, $t4 # y = z
 		
+		addi $t3, $t3, 1
 		
+		j fib_loop		
 
 	invalid_input:
 		li $v0, 4
