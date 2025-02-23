@@ -16,4 +16,20 @@ main:
 	syscall
 	move $t0, $v0
 	
+	# load min, max values in registers
+	li $t1, -2147483648
+	li $t2, 2147483647
+	
+	# check bounds
+	blt $t0, $t1, invalid_input
+	bgt $t0, $t2, invalid_input
+	
+	invalid_input:
+		li $v0, 4
+		la $a0, error_prompt
+		syscall
+		
+		j main
+	
+	
 	
