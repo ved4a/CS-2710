@@ -22,23 +22,24 @@ main:
 	# set variables x, y, counter
 	li $t1, 0 # x = 0
 	li $t2, 1 # y = 1
-	li $t3, 0 # counter = 0
-		
-	# check if counter < n	
-	blt $t3, $t0, fib_loop
+	li $t3, 1 # counter = 0
 	
-	# return y
-	li $v0, 4
-	la $a0, result_prompt
-	syscall
+	check_n:
+		# check if counter < n	
+		blt $t3, $t0, fib_loop
 	
-	li $v0, 1
-	move $a0, $t2
-	syscall
+		# return y
+		li $v0, 4
+		la $a0, result_prompt
+		syscall
 	
-	# end program
-	li $v0, 10
-	syscall
+		li $v0, 1
+		move $a0, $t2
+		syscall
+	
+		# end program
+		li $v0, 10
+		syscall
 	
 	fib_loop:
 		add $t4, $t1, $t2 # set z = x + y
@@ -47,7 +48,7 @@ main:
 		
 		addi $t3, $t3, 1
 		
-		j fib_loop		
+		j check_n		
 
 	invalid_input:
 		li $v0, 4
